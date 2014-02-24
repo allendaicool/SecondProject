@@ -1,60 +1,35 @@
 require 'spec_helper'
 
 describe "Static pages" do
+subject { page }
+  
+describe "Home page" do
+    before { visit root_path }
 
-  describe "Home page" do
-
-    it "should have the content 'Second Project'" do
-      visit root_path
-      expect(page).to have_content('Second Project')
-    end
-    
-    it "should have the base title" do
-      visit root_path
-      expect(page).to have_title("This is our Second Project")
-    end
-    
-    it "should not have a custom page title" do
-          visit root_path
-          expect(page).not_to have_title('| Home')
-        end
-    
-  end
-
-  describe "About page" do
-
-    it "should have the content 'About Us'" do
-      visit about_path
-      expect(page).to have_content('About Us')
-    end
-    it "should have the right title" do
-      visit about_path
-      expect(page).to have_title("This is our Second Project| About Us")
-    end
+    it { should have_content('Second Project') }
+    it { should have_title(full_title('')) }
+    it { should_not have_title('| Home') }
   end
   
-  describe "Blog page" do
+  describe "About page" do
+      before { visit about_path }
 
-    it "should have the content 'Blog'" do
-      visit blog_path
-      expect(page).to have_content('Blog')
+      it { should have_content('About') }
+      it { should have_title(full_title('About Us')) }
     end
-    it "should have the right title" do
-      visit blog_path
-      expect(page).to have_title("This is our Second Project| Blog")
-    end
+  
+  describe "Blog page" do
+    before { visit blog_path }
+
+    it { should have_content('Blog') }
+    it { should have_title(full_title('Blog')) }
     
   end
   describe "FAQ page" do
+    before { visit faq_path }
 
-    it "should have the content 'FAQ'" do
-      visit faq_path
-      expect(page).to have_content('FAQ')
-    end
-    it "should have the right title" do
-     visit faq_path
-      expect(page).to have_title("This is our Second Project| FAQ")
-    end
+    it { should have_content('FAQ') }
+    it { should have_title(full_title('FAQ')) }
   end
   
   
