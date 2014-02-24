@@ -25,7 +25,7 @@ describe "Static pages" do
 
     it "should have the content 'About Us'" do
       visit '/static_pages/about'
-      expect(page).to have_content('About Us')
+      expect(page).to have_content('This is About Us')
     end
     it "should have the right title" do
       visit '/static_pages/about'
